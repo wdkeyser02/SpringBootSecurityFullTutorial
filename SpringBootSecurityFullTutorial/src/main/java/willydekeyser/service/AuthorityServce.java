@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
 import willydekeyser.dto.AuthorityDto;
-import willydekeyser.mappers.AuthorityMapper;
+import willydekeyser.mapper.AuthorityMapper;
 import willydekeyser.model.Authority;
 import willydekeyser.repository.AuthorityRepository;
 

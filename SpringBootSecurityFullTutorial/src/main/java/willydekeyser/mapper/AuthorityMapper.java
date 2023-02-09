@@ -1,4 +1,4 @@
-package willydekeyser.mappers;
+package willydekeyser.mapper;
 
 import java.util.List;
 

@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
 import willydekeyser.dto.UserDto;
-import willydekeyser.mappers.UserMapper;
+import willydekeyser.mapper.UserMapper;
 import willydekeyser.model.User;
 import willydekeyser.repository.UserRepository;
 
