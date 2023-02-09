@@ -11,9 +11,10 @@ import willydekeyser.model.Authority;
 public class AuthorityMapper {
 
 	public AuthorityDto authorityEntityToDto(Authority authority) {
-		return new AuthorityDto(
-				authority.getId(),
-				authority.getAuthority());	
+		return AuthorityDto.builder()
+				.id(authority.getId())
+				.authority(authority.getAuthority())
+				.build();
 	}
 	
 	public List<AuthorityDto> authorityListEntityToDto(List<Authority> authorities) {
@@ -23,9 +24,10 @@ public class AuthorityMapper {
 	}
 		
 	public Authority authorityDtoToEntity(AuthorityDto authority) {
-		return new Authority(
-				authority.id(),
-				authority.authority());	
+		return Authority.builder()
+				.id(authority.id())
+				.authority(authority.authority())
+				.build();
 	}
 	
 	public List<Authority> authorityListDtoToEntity(List<AuthorityDto> authorities) {

@@ -15,18 +15,19 @@ public class UserMapper {
 	private final AuthorityMapper authorityMapper;
 	
 	public UserDto userEntityToDto(User user) {
-		return new UserDto(
-				user.getId(),
-				user.getUsername(),
-				authorityMapper.authorityListEntityToDto(user.getAuthorities()),
-				user.getAccountNonExpired(),
-				user.getAccountNonLocked(),
-				user.getCredentialsNonExpired(),
-				user.getEnabled(),
-				user.getFirstName(),
-				user.getLastName(),
-				user.getEmailAddress(),
-				user.getBirthdate());
+		return UserDto.builder()
+				.id(user.getId())
+				.username(user.getUsername())
+				.authorities(authorityMapper.authorityListEntityToDto(user.getAuthorities()))
+				.accountNonExpired(user.getAccountNonExpired())
+				.accountNonLocked(user.getAccountNonLocked())
+				.credentialsNonExpired(user.getCredentialsNonExpired())
+				.enabled(user.getEnabled())
+				.firstName(user.getFirstName())
+				.lastName(user.getLastName())
+				.emailAddress(user.getEmailAddress())
+				.birthdate(user.getBirthdate())
+				.build();
 	}
 	
 	public List<UserDto> userListEntityToDto(List<User> users) {
@@ -36,19 +37,20 @@ public class UserMapper {
 	}
 	
 	public User userDtoToEntity(UserDto user, String password) {
-		return new User(
-				user.id(),
-				user.username(),
-				password,
-				authorityMapper.authorityListDtoToEntity(user.authorities()),
-				user.accountNonExpired(),
-				user.accountNonLocked(),
-				user.credentialsNonExpired(),
-				user.enabled(),
-				user.firstName(),
-				user.lastName(),
-				user.emailAddress(),
-				user.birthdate());
+		return User.builder()
+				.id(user.id())
+				.username(user.username())
+				.password(password)
+				.authorities(authorityMapper.authorityListDtoToEntity(user.authorities()))
+				.accountNonExpired(user.accountNonExpired())
+				.accountNonLocked(user.accountNonLocked())
+				.credentialsNonExpired(user.credentialsNonExpired())
+				.enabled(user.enabled())
+				.firstName(user.firstName())
+				.lastName(user.lastName())
+				.emailAddress(user.emailAddress())
+				.birthdate(user.birthdate())
+				.build();
 	}
 
 	public List<User> userListDtoToEntity(List<UserDto> users, String password) {

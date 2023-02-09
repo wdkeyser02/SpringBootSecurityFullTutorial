@@ -3,6 +3,9 @@ package willydekeyser.dto;
 import java.time.LocalDate;
 import java.util.List;
 
+import lombok.Builder;
+
+@Builder
 public record UserDto(
 		Integer id,
 		String username,
