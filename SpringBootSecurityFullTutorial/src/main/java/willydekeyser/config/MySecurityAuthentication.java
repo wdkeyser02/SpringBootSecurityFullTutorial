@@ -13,14 +13,14 @@ public class MySecurityAuthentication implements Authentication {
 	private final boolean isAuthenticated;
 	private final String name;
 	private final String password;
-	private final MySecurityUser myUser;
+	private final MySecurityUser mySecurityUser;
 	private final Collection<GrantedAuthority> authorities;
 
-	private MySecurityAuthentication(Collection<GrantedAuthority> authorities, String name, MySecurityUser myUser, String password) {
+	private MySecurityAuthentication(Collection<GrantedAuthority> authorities, String name, MySecurityUser mySecurityUser, String password) {
 		this.authorities = authorities;
 		this.name = name;
 		this.password = password;
-		this.myUser = myUser;
+		this.mySecurityUser = mySecurityUser;
 		this.isAuthenticated = password == null;
 	}
 	
@@ -54,7 +54,7 @@ public class MySecurityAuthentication implements Authentication {
 
 	@Override
 	public Object getPrincipal() {
-		return myUser;
+		return mySecurityUser;
 	}
 
 	@Override

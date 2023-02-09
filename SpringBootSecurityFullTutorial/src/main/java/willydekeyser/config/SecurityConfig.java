@@ -22,7 +22,7 @@ import willydekeyser.repository.UserRepository;
 public class SecurityConfig {
 
 	@Bean
-	SecurityFilterChain securityFilterChain(HttpSecurity http, UserDetailsService userDetailsService) throws Exception {
+	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		
 		http
 			.authorizeHttpRequests(authConfig -> {
@@ -49,10 +49,9 @@ public class SecurityConfig {
 	}
 	
 	@Bean
-	public SecurityEvaluationContextExtension securityEvaluationContextExtension() {
+	SecurityEvaluationContextExtension securityEvaluationContextExtension() {
 		return new SecurityEvaluationContextExtension();
 	}
-	
 	
 	@Bean
 	ApplicationListener<AuthenticationSuccessEvent> successEvent() {
