@@ -2,23 +2,27 @@ package willydekeyser.controller;
 
 import java.util.List;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
 import willydekeyser.dto.AuthorityDto;
 import willydekeyser.service.AuthorityServce;
 
-@RestController
+@Controller
 @RequiredArgsConstructor
 public class AuthorityController {
 	
 	private final AuthorityServce authorityServce;
 	
 	@GetMapping("/authorities")
-	public List<AuthorityDto> getauthorities() {
-		return authorityServce.getAllAuthorities();
+	public String getauthorities(Model model) {
+		List<AuthorityDto> authorities = authorityServce.getAllAuthorities();
+		model.addAttribute("title", "Athorities");
+		model.addAttribute("authorities", authorities);
+		return "authorities";
 	}
 
 	@GetMapping("/authorities/{id}")

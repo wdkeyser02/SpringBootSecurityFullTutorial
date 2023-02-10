@@ -1,0 +1,25 @@
+html, body{
+	margin: 20px;
+	}
+	
+h1 {
+	color: blue;
+}
+
+.error {
+	color: red;
+}
+
+.header{
+	margin: 20px;
+	padding: 20px;
+}
+
+a.header {
+	padding: 5px;
+}
+
+th, td{
+	padding: 5px;
+	text-align: left;
+}

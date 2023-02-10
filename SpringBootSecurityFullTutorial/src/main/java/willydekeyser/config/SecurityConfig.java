@@ -1,7 +1,5 @@
 package willydekeyser.config;
 
-import static org.springframework.security.config.Customizer.withDefaults;
-
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,6 +12,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.data.repository.query.SecurityEvaluationContextExtension;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import willydekeyser.repository.UserRepository;
 
@@ -26,7 +25,7 @@ public class SecurityConfig {
 		
 		http
 			.authorizeHttpRequests(authConfig -> {
-				authConfig.requestMatchers(HttpMethod.GET, "/").permitAll();
+				authConfig.requestMatchers(HttpMethod.GET, "/", "/login", "/error", "/login-error", "/logout", "/css/**").permitAll();
 				authConfig.requestMatchers(HttpMethod.GET, "/user").hasRole("USER");
 				authConfig.requestMatchers(HttpMethod.GET, "/admin").hasRole("ADMIN");
 				authConfig.requestMatchers(HttpMethod.GET, "/developer").hasRole("DEVELOPER");
@@ -34,7 +33,18 @@ public class SecurityConfig {
 				authConfig.requestMatchers(HttpMethod.GET, "/authorities").hasAnyRole("DEVELOPER");
 				authConfig.anyRequest().authenticated();
 			})
-			.formLogin(withDefaults());
+			.formLogin(login -> {
+				login.loginPage("/login");
+				login.defaultSuccessUrl("/");
+				login.failureUrl("/login-error");
+				}
+			)
+			.logout(logout -> {
+				logout.logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
+				logout.logoutSuccessUrl("/");
+				logout.deleteCookies("JSESSIONID");
+				logout.invalidateHttpSession(true);
+			});
 		return http.build();
 	}
 	
