@@ -3,6 +3,7 @@
 	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head th:replace="~{fragments :: head}"></head>
 <body>
+	<div class="body">
 	<h1>Login page</h1>
 	<p th:if="${loginError}" class="error">Wrong user or password</p>
 	<form th:action="@{/login}" method="post">
@@ -11,5 +12,7 @@
 			for="password">Password</label>: <input type="password" id="password"
 			name="password" /> <br /> <input type="submit" value="Log in" />
 	</form>
+	</div>
+	<div th:replace="~{fragments :: footer}"></div>
 </body>
 </html>

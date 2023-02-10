@@ -3,7 +3,9 @@
 	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head th:replace="~{fragments :: head}"></head>
 <body>
+
 	<div class="header" th:replace="~{fragments :: header}"></div>
+	<div class="body">
 	<div sec:authorize="isAuthenticated()">
 		<p>
 			Logged user: <span sec:authentication="name"> </span>
@@ -56,5 +58,7 @@
 			</tr>
 		</table>
 	</div>
+	</div>
+<div th:replace="~{fragments :: footer}"></div>
 </body>
 </html>

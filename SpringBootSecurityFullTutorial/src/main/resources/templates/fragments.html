@@ -7,7 +7,7 @@
 	<title th:text="${title}">Title</title>
 </head>
 
-<div th:fragment="header">
+<div class="header" th:fragment="header">
 	<p><a href="/login"><spam sec:authorize="!isAuthenticated()">Login</spam></a> 
     <a class="header" href="/logout"><span sec:authorize="isAuthenticated()">Logout</span></a> 
     <a class="header" href="/"><span sec:authorize="isAuthenticated()">Home</span></a> 
@@ -48,5 +48,7 @@
 		</tr>
 	</table>
 </div>
-
+<div th:fragment="footer">
+	<div class="footer"><p class="footer">Willy De Keyser</p></div>
+</div>
 </html>
