@@ -38,3 +38,7 @@ th, td{
 	padding: 10px;
 	background-color: LightGrey;
 }
+
+.test {
+	background-color: blue;
+}
