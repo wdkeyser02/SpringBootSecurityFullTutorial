@@ -3,12 +3,15 @@
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6" 
 	xmlns:sec="http://www.thymeleaf.org">
+
 <head th:replace="~{fragments :: head}"></head>
+
 <body>
 	<div th:replace="~{fragments :: header}"></div>
-		<div class="body">
-	<h1>Users</h1>
-	<div th:replace="~{fragments :: users_table}"></div>
+	
+	<div class="body">
+		<h1>Users</h1>
+		<div th:replace="~{fragments :: users_table}"></div>
 	</div>
 	
 	<div th:replace="~{fragments :: footer}"></div>

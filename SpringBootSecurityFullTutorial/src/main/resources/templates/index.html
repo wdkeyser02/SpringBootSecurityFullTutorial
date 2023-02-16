@@ -3,39 +3,42 @@
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6" 
 	xmlns:sec="http://www.thymeleaf.org">
+	
 <head th:replace="~{fragments :: head}"></head>
-<body>
 
+<body>
 	<div class="header" th:replace="~{fragments :: header}"></div>
 	<div class="body">
-	<div sec:authorize="isAuthenticated()">
-		<p>Logged user: <span sec:authentication="name"> </span></p>
-		<p>Roles: <span sec:authentication="principal.authorities"> </span></p>
-	</div>
-	<h1>Spring Boot Security Full Tutorial</h1>
-
-	<p></p>
-	<div sec:authorize="isAuthenticated()">
-		<p>Id: <span th:text="${user.id}"></span></p>
-		<p>Username: <span th:text="${user.username}"></span></p>
-		<p>Account Non Expired: <span th:text="${user.accountNonExpired}"></span></p>
-		<p>Account Non Locked: <span th:text="${user.accountNonLocked}"></span></p>
-		<p>Credentials Non Expired: <span th:text="${user.credentialsNonExpired}"></span></p>
-		<p>Enabled: <span th:text="${user.enabled}"></span></p>
-		<p>Name: <span th:text="${user.firstName} + ' ' + ${user.lastName}"></span></p>
-		<p>E-mail address: <span th:text="${user.emailAddress}"></span></p>
-		<p>Birthdate: <span	th:text="${#temporals.format(user.birthdate, 'dd-MM-yyyy')}"></span></p>
-		<table>
-			<tr>
-				<th>Id</th>
-				<th>Authority</th>
-			</tr>
-			<tr th:each="authority : ${user.authorities}">
-				<td th:text="${authority.id}"></td>
-				<td th:text="${authority.authority}"></td>
-			</tr>
-		</table>
-	</div>
+	
+		<div sec:authorize="isAuthenticated()">
+			<p>Logged user: <span sec:authentication="name"> </span></p>
+			<p>Roles: <span sec:authentication="principal.authorities"> </span></p>
+		</div>
+		
+		<h1>Spring Boot Security Full Tutorial</h1>
+	
+		<p></p>
+		<div sec:authorize="isAuthenticated()">
+			<p>Id: <span th:text="${user.id}"></span></p>
+			<p>Username: <span th:text="${user.username}"></span></p>
+			<p>Account Non Expired: <span th:text="${user.accountNonExpired}"></span></p>
+			<p>Account Non Locked: <span th:text="${user.accountNonLocked}"></span></p>
+			<p>Credentials Non Expired: <span th:text="${user.credentialsNonExpired}"></span></p>
+			<p>Enabled: <span th:text="${user.enabled}"></span></p>
+			<p>Name: <span th:text="${user.firstName} + ' ' + ${user.lastName}"></span></p>
+			<p>E-mail address: <span th:text="${user.emailAddress}"></span></p>
+			<p>Birthdate: <span	th:text="${#temporals.format(user.birthdate, 'dd-MM-yyyy')}"></span></p>
+			<table>
+				<tr>
+					<th>Id</th>
+					<th>Authority</th>
+				</tr>
+				<tr th:each="authority : ${user.authorities}">
+					<td th:text="${authority.id}"></td>
+					<td th:text="${authority.authority}"></td>
+				</tr>
+			</table>
+		</div>
 	</div>
 <div th:replace="~{fragments :: footer}"></div>
 </body>
