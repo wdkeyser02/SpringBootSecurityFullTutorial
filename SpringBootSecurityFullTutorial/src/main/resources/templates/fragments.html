@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="https://www.thymeleaf.org" 
+	xmlns:sec="http://www.thymeleaf.org">
 
 <head th:fragment="head">
 	<meta charset="UTF-8">
@@ -8,11 +10,11 @@
 </head>
 
 <div class="header" th:fragment="header">
-	<p><a href="/login"><spam sec:authorize="!isAuthenticated()">Login</spam></a> 
+	<p><a href="/login"><span sec:authorize="!isAuthenticated()">Login</span></a> 
     <a class="header" href="/logout"><span sec:authorize="isAuthenticated()">Logout</span></a> 
     <a class="header" href="/"><span sec:authorize="isAuthenticated()">Home</span></a> 
-    <a class="header" href="/users"><spam sec:authorize="isAuthenticated() and hasRole('DEVELOPER')">Users</spam></a> 
-    <a class="header" href="/authorities"><spam sec:authorize="isAuthenticated() and hasRole('DEVELOPER')">Authorities</spam></a></p>
+    <a class="header" href="/users"><span sec:authorize="isAuthenticated() and hasRole('DEVELOPER')">Users</span></a> 
+    <a class="header" href="/authorities"><span sec:authorize="isAuthenticated() and hasRole('DEVELOPER')">Authorities</span></a></p>
     <p></p>
 </div>
 
