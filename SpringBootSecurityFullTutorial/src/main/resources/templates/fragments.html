@@ -38,6 +38,10 @@
             <th>First Name</th>
             <th>Last Name</th>
             <th>E-mail address</th>
+            <th>Account Non Expired</th>
+            <th>Account Non Locked</th>
+            <th>Credentials Non Expired</th>
+            <th>Enabled</th>
         </tr>	
 		<tr th:each="user : ${users}">
 			<td th:text="${user.id}"></td>
@@ -45,6 +49,10 @@
 			<td th:text="${user.firstName}"></td>
 			<td th:text="${user.lastName}"></td>
 			<td th:text="${user.emailAddress}"></td>
+			<td th:text="${user.accountNonExpired}"></td>
+			<td th:text="${user.accountNonLocked}"></td>
+			<td th:text="${user.credentialsNonExpired}"></td>
+			<td th:text="${user.enabled}"></td>
 		</tr>
 	</table>
 </div>
